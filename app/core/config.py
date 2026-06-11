@@ -18,7 +18,7 @@ class SettingsSchema(BaseSettings):
 
     @computed_field
     @property
-    def database_url(self):
+    def database_url(self) -> str:
         return (
             f"postgresql+{self.POSTGRES_ASYNCPG}://"
             f"{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}@"

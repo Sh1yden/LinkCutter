@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from app.api.endpoints import router as main_router
 from app.api.lifespan import lifespan
 
-app = FastAPI(
+app: FastAPI = FastAPI(
     title="LinkCutter",
     version="v0.1.0",
     docs_url="/api.linkcutter/swagger_docs",

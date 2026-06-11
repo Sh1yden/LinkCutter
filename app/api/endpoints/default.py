@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, status
 
-from app.api.schemas import DefaultSchema
+from app.schemas import DefaultSchema
 
 router = APIRouter()
 
