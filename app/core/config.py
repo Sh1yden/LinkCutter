@@ -5,9 +5,13 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class SettingsSchema(BaseSettings):
     """Схема настроек приложения"""
 
+    # Логирование
+    LOG_LEVEL: str = Field(default="DEBUG", description="Level of logging")
+
+    # PostgreSQL
     POSTGRES_HOST: str = Field(default="localhost", description="PostgreSQL host")
     POSTGRES_ASYNCPG: str = Field(
-        default="asyncpg", description="PostgreSQL async драйвер"
+        default="asyncpg", description="PostgreSQL async driver"
     )
     POSTGRES_DB: str = Field(default="postgres", description="PostgreSQL database name")
     POSTGRES_USER: str = Field(default="postgres", description="PostgreSQL user")

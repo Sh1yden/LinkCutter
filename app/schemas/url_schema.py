@@ -1,4 +1,3 @@
-from datetime import datetime
 from pydantic import BaseModel, HttpUrl, Field, ConfigDict
 
 
@@ -25,7 +24,6 @@ class URLCreate(BaseUrlSchema):
 
 
 class URLResponse(BaseUrlSchema):
-    id: int
     short_url: str
-    original_url: str
-    created_at: datetime
+    original_url: HttpUrl
+    code: str

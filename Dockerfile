@@ -1,23 +1,15 @@
-FROM ghcr.io/astral-sh/uv:python3.12-slim
+FROM python:3.13-slim
 
 WORKDIR /app
 
-# Копируем файлы зависимостей
-COPY pyproject.toml uv.lock ./
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
 
-# Устанавливаем зависимости в системный Python (без venv)
-# --system устанавливает в системный Python образа
-# --no-install-project не собирает твой пакет
-RUN uv sync --frozen --no-dev --no-install-project --system
+COPY requirements.txt .
 
-# Копируем исходный код
+RUN pip install --no-cache-dir -r requirements.txt
+
 COPY . .
 
-# Опционально: создаем пользователя для безопасности
-RUN useradd -m appuser && chown -R appuser:appuser /app
-USER appuser
-
-EXPOSE 8000
-
-# Запускаем uvicorn напрямую (он уже в PATH)
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4 --loop uvloop --http httptools --log-level warning
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4", "--loop", "uvloop", "--http", "httptools", "--log-level", "warning"]

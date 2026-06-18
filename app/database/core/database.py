@@ -8,7 +8,7 @@ engine = create_async_engine(
     pool_timeout=30,
 )
 
-ASyncSessionLocal = async_sessionmaker(
+AsyncSessionLocal = async_sessionmaker(
     bind=engine,
     class_=AsyncSession,
     expire_on_commit=False,
@@ -16,6 +16,5 @@ ASyncSessionLocal = async_sessionmaker(
 
 
 async def get_db() -> AsyncSession:
-    async with ASyncSessionLocal() as session:
+    async with AsyncSessionLocal() as session:
         yield session
-        await session.commit()

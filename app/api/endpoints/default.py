@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, status
 
 from app.schemas import DefaultSchema
 
@@ -19,11 +19,4 @@ router = APIRouter()
 )
 def default_response():
     """Check API status"""
-
-    if not router:
-        raise HTTPException(
-            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail="GrindNode API is not available",
-        )
-
     return {"status": True}

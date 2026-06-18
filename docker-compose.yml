@@ -3,11 +3,19 @@ services:
     container_name: linkcutter_api
     build: .
     restart: always
+    environment:
+      - LOG_LEVEL=WARN
+      - POSTGRES_HOST=postgres
     depends_on:
       postgres:
         condition: service_healthy
+    ports:
+      - "8000:8000"
     env_file:
       - .env
+    networks:
+      - default
+      - internet_bridge
 
   postgres:
     container_name: linkcutter_db
@@ -24,10 +32,17 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}" ]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 5s
       timeout: 5s
       retries: 5
       start_period: 10s
+    networks:
+      - default
+
 volumes:
   postgres_data:
+
+networks:
+  internet_bridge:
+    external: true
