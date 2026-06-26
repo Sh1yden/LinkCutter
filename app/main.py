@@ -36,7 +36,7 @@ app.mount("/app/static", StaticFiles(directory="app/static"), name="static")
 
 @app.get("/favicon.ico", include_in_schema=False)
 async def favicon():
-    return FileResponse("app/static/favicon.svg", media_type="image/svg+xml")
+    return FileResponse("app/static/favicon.ico")
 
 
 # docs
@@ -45,7 +45,7 @@ async def custom_swagger():
     return get_swagger_ui_html(
         title=app.title,
         openapi_url=app.openapi_url,  # type: ignore
-        swagger_favicon_url="/app/static/favicon.svg",
+        swagger_favicon_url="/app/static/favicon.ico",
     )
 
 
