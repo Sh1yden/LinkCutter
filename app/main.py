@@ -12,7 +12,7 @@ from importlib.metadata import version, PackageNotFoundError
 try:
     _version = version("LinkCutter")
 except PackageNotFoundError:
-    _version = "0.0.0-dev"
+    _version = "1.0.0"
 
 _lg = get_logger("LinkCutter")
 setup_logging(settings.LOG_LEVEL)
