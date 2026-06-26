@@ -1,7 +1,7 @@
 __all__ = ["v1_router"]
 
 from fastapi import APIRouter
-from .short_urls_handles import router as url_router
+from .set_short_urls import router as url_router
 
 v1_router = APIRouter()
 

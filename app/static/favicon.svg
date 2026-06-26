@@ -1,0 +1,18 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Фон -->
+  <rect width="512" height="512" rx="120" fill="#1f1f28"/>
+
+  <!-- Лезвия и одна ручка ножниц -->
+  <g stroke="#dcd7ba" stroke-width="50" stroke-linecap="round" fill="none">
+    <!-- Верхняя ручка -->
+    <circle cx="190" cy="190" r="50"/>
+    <!-- Лезвия -->
+    <path d="M230 230 L 350 350"/>
+    <path d="M230 330 L 350 210"/>
+  </g>
+
+  <!-- Вторая ручка в виде звена цепи -->
+  <g stroke="#957fb8" stroke-width="50" stroke-linecap="round" fill="none">
+     <circle cx="190" cy="322" r="50"/>
+  </g>
+</svg>
